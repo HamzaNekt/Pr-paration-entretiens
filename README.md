@@ -1,6 +1,6 @@
 # Guide d'Entretien Technique - Questions et Réponses
 
-Ce document contient une collection structurée de questions fréquemment posées lors d'entretiens techniques, accompagnées de réponses détaillées et d'exemples de code. Il couvre Java, Spring Boot, JavaScript, Angular et React.
+Ce document contient une collection structurée de questions fréquemment posées lors d'entretiens techniques, accompagnées de réponses détaillées et d'exemples de code. Il couvre Java, Spring Boot, JavaScript, Angular, React, C#, ASP.NET, HTML, CSS, TypeScript, Docker, DevOps, Git et GitHub.
 
 ## 📋 Table des matières
 
@@ -73,6 +73,78 @@ Ce document contient une collection structurée de questions fréquemment posée
 - [Liste et Clés](#liste-et-clés-react)
 - [React et TypeScript](#react-et-typescript)
 - [Questions Avancées React](#questions-avancées-react)
+
+### C#
+- [Questions Fondamentales](#questions-fondamentales-csharp)
+- [Types et Variables](#types-et-variables-csharp)
+- [Programmation Orientée Objet](#programmation-orientée-objet-csharp)
+- [LINQ et Collections](#linq-et-collections-csharp)
+- [Programmation Asynchrone](#programmation-asynchrone-csharp)
+- [Gestion des Exceptions](#gestion-des-exceptions-csharp)
+- [Questions Avancées C#](#questions-avancées-csharp)
+
+### ASP.NET
+- [Questions Fondamentales ASP.NET](#questions-fondamentales-aspnet)
+- [ASP.NET Core MVC](#aspnet-core-mvc)
+- [Web API](#web-api-aspnet)
+- [Entity Framework Core](#entity-framework-core)
+- [Middleware et Pipeline](#middleware-et-pipeline)
+- [Sécurité et Authentification](#sécurité-et-authentification-aspnet)
+- [Déploiement](#déploiement-aspnet)
+
+### HTML
+- [Questions Fondamentales HTML](#questions-fondamentales-html)
+- [Sémantique HTML5](#sémantique-html5)
+- [Formulaires](#formulaires-html)
+- [Accessibilité](#accessibilité-html)
+- [SEO et Méta-données](#seo-et-méta-données)
+
+### CSS
+- [Questions Fondamentales CSS](#questions-fondamentales-css)
+- [Sélecteurs et Spécificité](#sélecteurs-et-spécificité)
+- [Box Model et Layout](#box-model-et-layout)
+- [Flexbox](#flexbox)
+- [CSS Grid](#css-grid)
+- [Responsive Design](#responsive-design)
+- [Animations et Transitions](#animations-et-transitions)
+- [Préprocesseurs CSS](#préprocesseurs-css)
+
+### TypeScript
+- [Questions Fondamentales TypeScript](#questions-fondamentales-typescript)
+- [Types et Interfaces](#types-et-interfaces-typescript)
+- [Generics](#generics-typescript)
+- [Types Avancés](#types-avancés-typescript)
+- [Décorateurs](#décorateurs-typescript)
+- [TypeScript avec React](#typescript-avec-react)
+
+### Docker
+- [Questions Fondamentales Docker](#questions-fondamentales-docker)
+- [Images et Conteneurs](#images-et-conteneurs)
+- [Dockerfile](#dockerfile)
+- [Docker Compose](#docker-compose)
+- [Réseaux et Volumes](#réseaux-et-volumes-docker)
+- [Optimisation](#optimisation-docker)
+
+### DevOps
+- [Concepts Fondamentaux](#concepts-fondamentaux-devops)
+- [CI/CD](#cicd)
+- [Infrastructure as Code](#infrastructure-as-code)
+- [Monitoring et Logging](#monitoring-et-logging)
+- [Cloud Platforms](#cloud-platforms)
+
+### Git
+- [Questions Fondamentales Git](#questions-fondamentales-git)
+- [Branches et Merge](#branches-et-merge)
+- [Rebase et Cherry-pick](#rebase-et-cherry-pick)
+- [Résolution de Conflits](#résolution-de-conflits)
+- [Bonnes Pratiques](#bonnes-pratiques-git)
+
+### GitHub
+- [Questions Fondamentales GitHub](#questions-fondamentales-github)
+- [Pull Requests](#pull-requests)
+- [GitHub Actions](#github-actions)
+- [GitHub Workflows](#github-workflows)
+- [Collaboration](#collaboration-github)
 
 ---
 
@@ -6504,3 +6576,3896 @@ function MultipleElementsDiv() {
   );
 }
 ```
+
+---
+
+## Questions Fondamentales C# {#questions-fondamentales-csharp}
+
+### 1. Qu'est-ce que C# et quelles sont ses principales caractéristiques ?
+
+C# (C Sharp) est un langage de programmation moderne, orienté objet et fortement typé développé par Microsoft. Il fait partie de la plateforme .NET.
+
+**Principales caractéristiques :**
+
+- **Langage orienté objet** : supporte l'encapsulation, l'héritage et le polymorphisme
+- **Fortement typé** : vérification des types à la compilation
+- **Gestion automatique de la mémoire** : garbage collector intégré
+- **Sécurité des types** : évite les erreurs courantes de manipulation de mémoire
+- **Moderne** : supporte la programmation asynchrone, LINQ, lambdas, etc.
+- **Multiplateforme** : avec .NET Core/.NET 5+, fonctionne sur Windows, Linux et macOS
+- **Intégré à l'écosystème .NET** : accès à une vaste bibliothèque de classes
+
+---
+
+### 2. Quelle est la différence entre .NET Framework, .NET Core et .NET 5+ ?
+
+- **.NET Framework** : version originale, uniquement Windows, dernière version 4.8, en mode maintenance
+- **.NET Core** : version cross-platform (1.0-3.1), modulaire, performante, open-source
+- **.NET 5/6/7/8+** : unification de .NET Framework et .NET Core, une seule plateforme pour tous les types d'applications, cross-platform, moderne
+
+**En résumé :**
+```
+.NET Framework (Windows only) + .NET Core (cross-platform) = .NET 5+ (unified)
+```
+
+---
+
+### 3. Qu'est-ce que le CLR (Common Language Runtime) ?
+
+Le CLR est le moteur d'exécution de .NET qui :
+
+- **Compile le code** : convertit le code IL (Intermediate Language) en code machine via le compilateur JIT (Just-In-Time)
+- **Gère la mémoire** : garbage collection automatique
+- **Assure la sécurité** : vérification des types, gestion des exceptions
+- **Fournit des services** : threading, gestion des exceptions, sécurité
+
+**Flux d'exécution :**
+```
+Code C# → Compilateur C# → IL (MSIL) → CLR/JIT → Code machine natif
+```
+
+---
+
+## Types et Variables C# {#types-et-variables-csharp}
+
+### 4. Quelle est la différence entre les types valeur et les types référence ?
+
+**Types valeur (Value Types) :**
+- Stockés sur la stack
+- Contiennent directement la valeur
+- Exemples : `int`, `double`, `bool`, `struct`, `enum`
+- Copie par valeur
+
+```csharp
+int a = 10;
+int b = a;  // b est une copie de a
+b = 20;     // a reste 10
+```
+
+**Types référence (Reference Types) :**
+- Stockés sur le heap
+- La variable contient une référence (adresse mémoire)
+- Exemples : `class`, `interface`, `delegate`, `string`, `array`
+- Copie par référence
+
+```csharp
+List<int> list1 = new List<int> { 1, 2, 3 };
+List<int> list2 = list1;  // list2 référence le même objet
+list2.Add(4);             // list1 contient aussi 4
+```
+
+---
+
+### 5. Qu'est-ce que le boxing et unboxing ?
+
+- **Boxing** : conversion d'un type valeur en type référence (object)
+- **Unboxing** : conversion inverse, d'un object vers un type valeur
+
+```csharp
+// Boxing
+int valeur = 123;
+object obj = valeur;  // Boxing automatique
+
+// Unboxing
+int nombre = (int)obj;  // Unboxing explicite avec cast
+
+// Impact performance : éviter le boxing/unboxing excessif
+// Utiliser des génériques à la place
+List<int> nombres = new List<int>();  // Pas de boxing
+```
+
+---
+
+### 6. Quelle est la différence entre `var`, `dynamic` et `object` ?
+
+```csharp
+// var : typage implicite à la compilation
+var nom = "Alice";  // Le compilateur infère string
+// nom = 123;  // ERREUR : nom est de type string
+
+// dynamic : typage dynamique à l'exécution
+dynamic valeur = "Alice";
+valeur = 123;  // OK, vérification à l'exécution
+valeur.UneMethodeInexistante();  // Compile mais erreur à l'exécution
+
+// object : type de base de tous les types
+object obj = "Alice";
+// obj.ToUpper();  // ERREUR : nécessite un cast
+string s = ((string)obj).ToUpper();  // OK
+```
+
+---
+
+## Programmation Orientée Objet C# {#programmation-orientée-objet-csharp}
+
+### 7. Expliquez les modificateurs d'accès en C#
+
+```csharp
+public class Exemple
+{
+    public int Public;           // Accessible partout
+    private int Private;         // Accessible uniquement dans cette classe
+    protected int Protected;     // Accessible dans cette classe et ses dérivées
+    internal int Internal;       // Accessible dans le même assembly
+    protected internal int ProtectedInternal;  // Protected OU Internal
+    private protected int PrivateProtected;    // Protected ET Internal
+}
+```
+
+---
+
+### 8. Qu'est-ce qu'une propriété (Property) et pourquoi l'utiliser ?
+
+Les propriétés encapsulent les champs avec des accesseurs get/set :
+
+```csharp
+public class Personne
+{
+    // Auto-property (recommandé)
+    public string Nom { get; set; }
+
+    // Property avec backing field
+    private int _age;
+    public int Age
+    {
+        get { return _age; }
+        set
+        {
+            if (value >= 0)
+                _age = value;
+            else
+                throw new ArgumentException("L'âge doit être positif");
+        }
+    }
+
+    // Read-only property
+    public string NomComplet { get; }
+
+    // Init-only property (C# 9+)
+    public string Email { get; init; }
+
+    // Expression-bodied property
+    public string Description => $"{Nom} a {Age} ans";
+}
+
+// Utilisation
+var p = new Personne
+{
+    Nom = "Alice",
+    Age = 25,
+    Email = "alice@example.com"  // Seulement lors de l'initialisation
+};
+// p.Email = "nouveau@example.com";  // ERREUR avec init
+```
+
+---
+
+### 9. Qu'est-ce qu'une classe abstraite et une interface ? Différences ?
+
+**Classe abstraite :**
+```csharp
+public abstract class Animal
+{
+    // Peut avoir des champs
+    protected string nom;
+
+    // Méthode concrète
+    public void Dormir()
+    {
+        Console.WriteLine("Zzz...");
+    }
+
+    // Méthode abstraite (doit être implémentée)
+    public abstract void FaireDuBruit();
+}
+
+public class Chien : Animal
+{
+    public override void FaireDuBruit()
+    {
+        Console.WriteLine("Woof!");
+    }
+}
+```
+
+**Interface :**
+```csharp
+public interface IVolant
+{
+    void Voler();
+    int Altitude { get; set; }
+
+    // C# 8+ : méthodes par défaut
+    void Atterrir()
+    {
+        Altitude = 0;
+    }
+}
+
+public class Oiseau : Animal, IVolant
+{
+    public int Altitude { get; set; }
+
+    public void Voler()
+    {
+        Console.WriteLine("Je vole!");
+    }
+
+    public override void FaireDuBruit()
+    {
+        Console.WriteLine("Cui cui!");
+    }
+}
+```
+
+**Différences clés :**
+- Une classe peut hériter d'une seule classe abstraite mais implémenter plusieurs interfaces
+- Classe abstraite peut avoir des champs, constructeurs, membres concrets
+- Interface définit un contrat (que faire), classe abstraite peut définir un comportement (comment faire)
+
+---
+
+### 10. Qu'est-ce que le polymorphisme en C# ?
+
+Le polymorphisme permet à un objet de prendre plusieurs formes :
+
+```csharp
+// Polymorphisme par héritage
+public class Forme
+{
+    public virtual double CalculerAire()
+    {
+        return 0;
+    }
+}
+
+public class Cercle : Forme
+{
+    public double Rayon { get; set; }
+
+    public override double CalculerAire()
+    {
+        return Math.PI * Rayon * Rayon;
+    }
+}
+
+public class Rectangle : Forme
+{
+    public double Largeur { get; set; }
+    public double Hauteur { get; set; }
+
+    public override double CalculerAire()
+    {
+        return Largeur * Hauteur;
+    }
+}
+
+// Utilisation polymorphe
+List<Forme> formes = new List<Forme>
+{
+    new Cercle { Rayon = 5 },
+    new Rectangle { Largeur = 10, Hauteur = 20 }
+};
+
+foreach (var forme in formes)
+{
+    Console.WriteLine($"Aire : {forme.CalculerAire()}");
+}
+```
+
+---
+
+## LINQ et Collections C# {#linq-et-collections-csharp}
+
+### 11. Qu'est-ce que LINQ et comment l'utiliser ?
+
+LINQ (Language Integrated Query) permet d'interroger des collections de manière déclarative :
+
+```csharp
+List<int> nombres = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+// Syntaxe méthode (recommandée)
+var pairs = nombres
+    .Where(n => n % 2 == 0)
+    .Select(n => n * 2)
+    .OrderByDescending(n => n)
+    .ToList();
+
+// Syntaxe requête
+var pairsQuery = (from n in nombres
+                  where n % 2 == 0
+                  orderby n descending
+                  select n * 2).ToList();
+
+// Opérations courantes
+var premier = nombres.First();
+var premierOuDefaut = nombres.FirstOrDefault(n => n > 100);
+var existe = nombres.Any(n => n > 5);
+var tousPositifs = nombres.All(n => n > 0);
+var somme = nombres.Sum();
+var moyenne = nombres.Average();
+var max = nombres.Max();
+```
+
+---
+
+### 12. Quelles sont les principales collections en C# ?
+
+```csharp
+// List<T> : liste dynamique (tableau redimensionnable)
+List<string> liste = new List<string> { "a", "b", "c" };
+liste.Add("d");
+
+// Dictionary<TKey, TValue> : paires clé-valeur
+Dictionary<string, int> ages = new Dictionary<string, int>
+{
+    ["Alice"] = 25,
+    ["Bob"] = 30
+};
+
+// HashSet<T> : ensemble sans doublons
+HashSet<int> ensemble = new HashSet<int> { 1, 2, 3, 2 };  // {1, 2, 3}
+
+// Queue<T> : file FIFO
+Queue<string> file = new Queue<string>();
+file.Enqueue("premier");
+string item = file.Dequeue();
+
+// Stack<T> : pile LIFO
+Stack<string> pile = new Stack<string>();
+pile.Push("premier");
+string top = pile.Pop();
+
+// IEnumerable<T> : interface de base pour l'itération
+IEnumerable<int> sequence = Enumerable.Range(1, 10);
+```
+
+---
+
+## Programmation Asynchrone C# {#programmation-asynchrone-csharp}
+
+### 13. Qu'est-ce que async/await et comment l'utiliser ?
+
+`async`/`await` permet d'écrire du code asynchrone de manière synchrone :
+
+```csharp
+// Méthode asynchrone
+public async Task<string> TelechargerDonneesAsync(string url)
+{
+    using (var client = new HttpClient())
+    {
+        // await libère le thread pendant l'attente
+        string resultat = await client.GetStringAsync(url);
+        return resultat;
+    }
+}
+
+// Utilisation
+public async Task TraiterDonneesAsync()
+{
+    try
+    {
+        string donnees = await TelechargerDonneesAsync("https://api.example.com");
+        Console.WriteLine($"Reçu : {donnees.Length} caractères");
+    }
+    catch (HttpRequestException ex)
+    {
+        Console.WriteLine($"Erreur : {ex.Message}");
+    }
+}
+
+// Multiples opérations asynchrones en parallèle
+public async Task<(string, string)> TelechargerPlusieursFichiersAsync()
+{
+    var tache1 = TelechargerDonneesAsync("https://api1.com");
+    var tache2 = TelechargerDonneesAsync("https://api2.com");
+
+    await Task.WhenAll(tache1, tache2);
+
+    return (tache1.Result, tache2.Result);
+}
+```
+
+---
+
+### 14. Quelle est la différence entre Task et Thread ?
+
+```csharp
+// Thread : niveau bas, contrôle manuel
+Thread thread = new Thread(() =>
+{
+    Console.WriteLine("Sur un nouveau thread");
+});
+thread.Start();
+thread.Join();  // Attendre la fin
+
+// Task : abstraction de haut niveau, utilise le thread pool
+Task task = Task.Run(() =>
+{
+    Console.WriteLine("Sur un thread du pool");
+});
+await task;  // Attendre de manière asynchrone
+
+// Task avec retour de valeur
+Task<int> taskAvecResultat = Task.Run(() =>
+{
+    return 42;
+});
+int resultat = await taskAvecResultat;
+```
+
+**Différences :**
+- **Thread** : ressource lourde, contrôle fin, pas de retour de valeur facile
+- **Task** : abstraction légère, intégrée avec async/await, retourne des valeurs, meilleure gestion des exceptions
+
+---
+
+## Gestion des Exceptions C# {#gestion-des-exceptions-csharp}
+
+### 15. Comment gérer les exceptions en C# ?
+
+```csharp
+// try-catch-finally
+try
+{
+    int resultat = 10 / 0;
+}
+catch (DivideByZeroException ex)
+{
+    Console.WriteLine($"Erreur spécifique : {ex.Message}");
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"Erreur générale : {ex.Message}");
+}
+finally
+{
+    // Toujours exécuté
+    Console.WriteLine("Nettoyage");
+}
+
+// Exception filters (C# 6+)
+try
+{
+    // code
+}
+catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+{
+    Console.WriteLine("Resource not found");
+}
+
+// Créer une exception personnalisée
+public class BusinessException : Exception
+{
+    public BusinessException(string message) : base(message) { }
+    public BusinessException(string message, Exception inner) : base(message, inner) { }
+}
+
+// Lancer une exception
+throw new BusinessException("Règle métier violée");
+```
+
+---
+
+## Questions Avancées C# {#questions-avancées-csharp}
+
+### 16. Qu'est-ce qu'un delegate et un event ?
+
+```csharp
+// Delegate : pointeur de fonction typé
+public delegate void NotificationHandler(string message);
+
+public class Notificateur
+{
+    // Event basé sur le delegate
+    public event NotificationHandler OnNotification;
+
+    public void EnvoyerNotification(string message)
+    {
+        // Déclencher l'event
+        OnNotification?.Invoke(message);
+    }
+}
+
+// Utilisation
+var notif = new Notificateur();
+notif.OnNotification += (msg) => Console.WriteLine($"Reçu : {msg}");
+notif.OnNotification += (msg) => Console.WriteLine($"Log : {msg}");
+notif.EnvoyerNotification("Hello!");
+
+// Delegates prédéfinis
+Action<string> action = (s) => Console.WriteLine(s);
+Func<int, int, int> addition = (a, b) => a + b;
+Predicate<int> estPair = (n) => n % 2 == 0;
+```
+
+---
+
+### 17. Qu'est-ce que la réflexion (Reflection) ?
+
+La réflexion permet d'inspecter et manipuler les types à l'exécution :
+
+```csharp
+// Obtenir le type
+Type type = typeof(string);
+Type type2 = "Hello".GetType();
+
+// Inspecter les membres
+PropertyInfo[] proprietes = type.GetProperties();
+MethodInfo[] methodes = type.GetMethods();
+
+// Créer une instance dynamiquement
+Type personneType = typeof(Personne);
+object instance = Activator.CreateInstance(personneType);
+
+// Appeler une méthode
+MethodInfo methode = personneType.GetMethod("DireBonjour");
+methode.Invoke(instance, null);
+
+// Lire/écrire une propriété
+PropertyInfo prop = personneType.GetProperty("Nom");
+prop.SetValue(instance, "Alice");
+string nom = (string)prop.GetValue(instance);
+```
+
+---
+
+### 18. Qu'est-ce qu'un record en C# 9+ ?
+
+Les records sont des types immuables pour les données :
+
+```csharp
+// Record simple
+public record Personne(string Nom, int Age);
+
+// Utilisation
+var p1 = new Personne("Alice", 25);
+var p2 = new Personne("Alice", 25);
+Console.WriteLine(p1 == p2);  // true (égalité par valeur)
+
+// Clonage avec modification
+var p3 = p1 with { Age = 26 };
+
+// Record avec corps
+public record Employe(string Nom, int Age)
+{
+    public string Poste { get; init; }
+
+    public void AfficherInfo()
+    {
+        Console.WriteLine($"{Nom}, {Age} ans, {Poste}");
+    }
+}
+```
+
+---
+
+### 19. Qu'est-ce que le pattern matching ?
+
+```csharp
+// Switch expression (C# 8+)
+public static string ObtenirType(object obj) => obj switch
+{
+    int i => $"Entier : {i}",
+    string s => $"Chaîne : {s}",
+    Personne { Age: >= 18 } => "Adulte",
+    Personne p => $"Mineur : {p.Nom}",
+    null => "Null",
+    _ => "Type inconnu"
+};
+
+// Property pattern
+public static decimal CalculerTarif(Personne p) => p switch
+{
+    { Age: < 12 } => 5.0m,
+    { Age: >= 12 and < 65 } => 10.0m,
+    { Age: >= 65 } => 7.0m,
+    _ => 0
+};
+
+// Pattern avec when
+public static string Categorie(int age) => age switch
+{
+    var a when a < 0 => "Invalide",
+    < 13 => "Enfant",
+    >= 13 and < 20 => "Adolescent",
+    >= 20 => "Adulte"
+};
+```
+
+---
+
+### 20. Qu'est-ce que IDisposable et using ?
+
+```csharp
+// IDisposable pour libérer les ressources
+public class Connexion : IDisposable
+{
+    private bool disposed = false;
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!disposed)
+        {
+            if (disposing)
+            {
+                // Libérer les ressources managées
+            }
+            // Libérer les ressources non-managées
+            disposed = true;
+        }
+    }
+}
+
+// Using statement (appelle Dispose automatiquement)
+using (var conn = new Connexion())
+{
+    // Utiliser la connexion
+}  // Dispose appelé automatiquement
+
+// Using declaration (C# 8+)
+using var conn2 = new Connexion();
+// Dispose appelé à la fin du scope
+```
+
+---
+## Questions Fondamentales ASP.NET {#questions-fondamentales-aspnet}
+
+### 1. Qu'est-ce que ASP.NET Core et quelles sont ses différences avec ASP.NET Framework ?
+
+**ASP.NET Core** est un framework web cross-platform, open-source et performant pour construire des applications web modernes.
+
+**Différences clés :**
+
+| ASP.NET Framework | ASP.NET Core |
+|-------------------|--------------|
+| Windows uniquement | Cross-platform (Windows, Linux, macOS) |
+| Monolithique | Modulaire |
+| System.Web dépendant d'IIS | Indépendant du serveur web |
+| .NET Framework | .NET Core/.NET 5+ |
+| Configuration XML | Configuration code-first |
+
+---
+
+### 2. Qu'est-ce que le pipeline de requête ASP.NET Core ?
+
+Le pipeline traite les requêtes HTTP via une séquence de middleware :
+
+```csharp
+public class Startup
+{
+    public void Configure(IApplicationBuilder app)
+    {
+        // Ordre important!
+        app.UseHttpsRedirection();
+        app.UseStaticFiles();
+        app.UseRouting();
+        app.UseAuthentication();
+        app.UseAuthorization();
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
+    }
+}
+```
+
+**Chaque middleware peut :**
+- Traiter la requête
+- Modifier la requête/réponse
+- Passer au middleware suivant
+- Court-circuiter le pipeline
+
+---
+
+## ASP.NET Core MVC {#aspnet-core-mvc}
+
+### 3. Expliquez le pattern MVC dans ASP.NET Core
+
+**MVC** : Model-View-Controller, sépare l'application en trois composants :
+
+```csharp
+// Model : données et logique métier
+public class Produit
+{
+    public int Id { get; set; }
+    public string Nom { get; set; }
+    public decimal Prix { get; set; }
+}
+
+// Controller : traite les requêtes
+public class ProduitController : Controller
+{
+    private readonly IProduitService _service;
+
+    public ProduitController(IProduitService service)
+    {
+        _service = service;
+    }
+
+    // Action qui retourne une vue
+    public IActionResult Index()
+    {
+        var produits = _service.ObtenirTous();
+        return View(produits);
+    }
+
+    // Action POST
+    [HttpPost]
+    public IActionResult Creer(Produit produit)
+    {
+        if (ModelState.IsValid)
+        {
+            _service.Ajouter(produit);
+            return RedirectToAction(nameof(Index));
+        }
+        return View(produit);
+    }
+}
+```
+
+**View (Razor) :**
+```html
+@model IEnumerable<Produit>
+
+<h2>Liste des Produits</h2>
+<table>
+    @foreach (var produit in Model)
+    {
+        <tr>
+            <td>@produit.Nom</td>
+            <td>@produit.Prix €</td>
+        </tr>
+    }
+</table>
+```
+
+---
+
+### 4. Qu'est-ce que Razor Pages ?
+
+Alternative à MVC pour les pages simples, combine controller et vue :
+
+```csharp
+// Pages/Produits/Index.cshtml.cs
+public class IndexModel : PageModel
+{
+    private readonly IProduitService _service;
+
+    public List<Produit> Produits { get; set; }
+
+    public IndexModel(IProduitService service)
+    {
+        _service = service;
+    }
+
+    public void OnGet()
+    {
+        Produits = _service.ObtenirTous();
+    }
+
+    public IActionResult OnPost(Produit produit)
+    {
+        _service.Ajouter(produit);
+        return RedirectToPage();
+    }
+}
+```
+
+---
+
+## Web API ASP.NET {#web-api-aspnet}
+
+### 5. Comment créer une Web API REST avec ASP.NET Core ?
+
+```csharp
+[ApiController]
+[Route("api/[controller]")]
+public class ProduitsController : ControllerBase
+{
+    private readonly IProduitService _service;
+
+    public ProduitsController(IProduitService service)
+    {
+        _service = service;
+    }
+
+    // GET: api/produits
+    [HttpGet]
+    public ActionResult<IEnumerable<Produit>> Get()
+    {
+        return Ok(_service.ObtenirTous());
+    }
+
+    // GET: api/produits/5
+    [HttpGet("{id}")]
+    public ActionResult<Produit> Get(int id)
+    {
+        var produit = _service.ObtenirParId(id);
+        if (produit == null)
+            return NotFound();
+        return Ok(produit);
+    }
+
+    // POST: api/produits
+    [HttpPost]
+    public ActionResult<Produit> Post([FromBody] Produit produit)
+    {
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
+        _service.Ajouter(produit);
+        return CreatedAtAction(nameof(Get), new { id = produit.Id }, produit);
+    }
+
+    // PUT: api/produits/5
+    [HttpPut("{id}")]
+    public IActionResult Put(int id, [FromBody] Produit produit)
+    {
+        if (id != produit.Id)
+            return BadRequest();
+
+        _service.Modifier(produit);
+        return NoContent();
+    }
+
+    // DELETE: api/produits/5
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id)
+    {
+        _service.Supprimer(id);
+        return NoContent();
+    }
+}
+```
+
+---
+
+### 6. Comment gérer les erreurs dans une API ?
+
+```csharp
+// Middleware d'exception global
+public class ExceptionMiddleware
+{
+    private readonly RequestDelegate _next;
+
+    public ExceptionMiddleware(RequestDelegate next)
+    {
+        _next = next;
+    }
+
+    public async Task InvokeAsync(HttpContext context)
+    {
+        try
+        {
+            await _next(context);
+        }
+        catch (Exception ex)
+        {
+            await HandleExceptionAsync(context, ex);
+        }
+    }
+
+    private static Task HandleExceptionAsync(HttpContext context, Exception ex)
+    {
+        context.Response.ContentType = "application/json";
+        context.Response.StatusCode = ex switch
+        {
+            NotFoundException => StatusCodes.Status404NotFound,
+            ValidationException => StatusCodes.Status400BadRequest,
+            _ => StatusCodes.Status500InternalServerError
+        };
+
+        return context.Response.WriteAsJsonAsync(new
+        {
+            error = ex.Message,
+            statusCode = context.Response.StatusCode
+        });
+    }
+}
+
+// Enregistrement dans Program.cs
+app.UseMiddleware<ExceptionMiddleware>();
+```
+
+---
+
+## Entity Framework Core {#entity-framework-core}
+
+### 7. Qu'est-ce qu'Entity Framework Core ?
+
+ORM (Object-Relational Mapper) pour .NET qui permet de travailler avec des bases de données via des objets C# :
+
+```csharp
+// DbContext
+public class ApplicationDbContext : DbContext
+{
+    public DbSet<Produit> Produits { get; set; }
+    public DbSet<Categorie> Categories { get; set; }
+
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        : base(options)
+    {
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        // Configuration fluente
+        modelBuilder.Entity<Produit>()
+            .HasOne(p => p.Categorie)
+            .WithMany(c => c.Produits)
+            .HasForeignKey(p => p.CategorieId);
+
+        modelBuilder.Entity<Produit>()
+            .Property(p => p.Prix)
+            .HasPrecision(18, 2);
+    }
+}
+
+// Entités
+public class Produit
+{
+    public int Id { get; set; }
+    [Required]
+    [MaxLength(100)]
+    public string Nom { get; set; }
+    public decimal Prix { get; set; }
+    public int CategorieId { get; set; }
+    public Categorie Categorie { get; set; }
+}
+```
+
+---
+
+### 8. Comment utiliser EF Core (CRUD) ?
+
+```csharp
+public class ProduitService
+{
+    private readonly ApplicationDbContext _context;
+
+    public ProduitService(ApplicationDbContext context)
+    {
+        _context = context;
+    }
+
+    // Create
+    public async Task<Produit> AjouterAsync(Produit produit)
+    {
+        _context.Produits.Add(produit);
+        await _context.SaveChangesAsync();
+        return produit;
+    }
+
+    // Read
+    public async Task<List<Produit>> ObtenirTousAsync()
+    {
+        return await _context.Produits
+            .Include(p => p.Categorie)  // Eager loading
+            .ToListAsync();
+    }
+
+    public async Task<Produit> ObtenirParIdAsync(int id)
+    {
+        return await _context.Produits
+            .FirstOrDefaultAsync(p => p.Id == id);
+    }
+
+    // Update
+    public async Task ModifierAsync(Produit produit)
+    {
+        _context.Entry(produit).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
+    }
+
+    // Delete
+    public async Task SupprimerAsync(int id)
+    {
+        var produit = await _context.Produits.FindAsync(id);
+        if (produit != null)
+        {
+            _context.Produits.Remove(produit);
+            await _context.SaveChangesAsync();
+        }
+    }
+}
+```
+
+---
+
+## Middleware et Pipeline {#middleware-et-pipeline}
+
+### 9. Comment créer un middleware personnalisé ?
+
+```csharp
+// Middleware de logging personnalisé
+public class RequestLoggingMiddleware
+{
+    private readonly RequestDelegate _next;
+    private readonly ILogger<RequestLoggingMiddleware> _logger;
+
+    public RequestLoggingMiddleware(
+        RequestDelegate next,
+        ILogger<RequestLoggingMiddleware> logger)
+    {
+        _next = next;
+        _logger = logger;
+    }
+
+    public async Task InvokeAsync(HttpContext context)
+    {
+        _logger.LogInformation($"Request: {context.Request.Method} {context.Request.Path}");
+
+        await _next(context);
+
+        _logger.LogInformation($"Response: {context.Response.StatusCode}");
+    }
+}
+
+// Extension method
+public static class MiddlewareExtensions
+{
+    public static IApplicationBuilder UseRequestLogging(this IApplicationBuilder builder)
+    {
+        return builder.UseMiddleware<RequestLoggingMiddleware>();
+    }
+}
+
+// Utilisation dans Program.cs
+app.UseRequestLogging();
+```
+
+---
+
+## Sécurité et Authentification ASP.NET {#sécurité-et-authentification-aspnet}
+
+### 10. Comment implémenter l'authentification JWT ?
+
+```csharp
+// Configuration dans Program.cs
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+        };
+    });
+
+// Service d'authentification
+public class AuthService
+{
+    private readonly IConfiguration _config;
+
+    public string GenerateToken(User user)
+    {
+        var securityKey = new SymmetricSecurityKey(
+            Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
+        var credentials = new SigningCredentials(
+            securityKey, SecurityAlgorithms.HmacSha256);
+
+        var claims = new[]
+        {
+            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+            new Claim(ClaimTypes.Name, user.Email),
+            new Claim(ClaimTypes.Role, user.Role)
+        };
+
+        var token = new JwtSecurityToken(
+            issuer: _config["Jwt:Issuer"],
+            audience: _config["Jwt:Audience"],
+            claims: claims,
+            expires: DateTime.Now.AddHours(3),
+            signingCredentials: credentials);
+
+        return new JwtSecurityTokenHandler().WriteToken(token);
+    }
+}
+
+// Controller protégé
+[Authorize]
+[ApiController]
+[Route("api/[controller]")]
+public class SecureController : ControllerBase
+{
+    [HttpGet]
+    [Authorize(Roles = "Admin")]
+    public IActionResult GetSecureData()
+    {
+        return Ok("Données sécurisées");
+    }
+}
+```
+
+---
+
+## Déploiement ASP.NET {#déploiement-aspnet}
+
+### 11. Comment déployer une application ASP.NET Core ?
+
+```bash
+# Publication de l'application
+dotnet publish -c Release -o ./publish
+
+# Avec Docker
+# Dockerfile
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+WORKDIR /app
+EXPOSE 80
+
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+COPY ["MonApp.csproj", "./"]
+RUN dotnet restore
+COPY . .
+RUN dotnet build -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "MonApp.dll"]
+```
+
+---
+
+## Questions Fondamentales HTML {#questions-fondamentales-html}
+
+### 1. Qu'est-ce que HTML et HTML5 ?
+
+**HTML** (HyperText Markup Language) est le langage de balisage standard pour créer des pages web.
+
+**HTML5** est la dernière version majeure, introduisant :
+- Nouvelles balises sémantiques (`<header>`, `<nav>`, `<article>`, `<section>`, `<footer>`)
+- APIs modernes (Canvas, SVG, Geolocation, Web Storage)
+- Support multimédia natif (`<video>`, `<audio>`)
+- Formulaires améliorés (nouveaux types d'input)
+- Suppression des éléments obsolètes (`<font>`, `<center>`)
+
+---
+
+### 2. Quelle est la structure de base d'un document HTML ?
+
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Description de la page">
+    <title>Titre de la page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>En-tête principal</h1>
+        <nav>
+            <ul>
+                <li><a href="#section1">Section 1</a></li>
+                <li><a href="#section2">Section 2</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <h2>Contenu principal</h2>
+            <p>Paragraphe de texte.</p>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mon Site</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+---
+
+## Sémantique HTML5 {#sémantique-html5}
+
+### 3. Quelles sont les principales balises sémantiques HTML5 ?
+
+```html
+<!-- Structure de page -->
+<header>En-tête de la page ou d'une section</header>
+<nav>Navigation principale</nav>
+<main>Contenu principal unique de la page</main>
+<article>Contenu autonome et réutilisable</article>
+<section>Section thématique</section>
+<aside>Contenu complémentaire</aside>
+<footer>Pied de page</footer>
+
+<!-- Contenu -->
+<figure>
+    <img src="image.jpg" alt="Description">
+    <figcaption>Légende de l'image</figcaption>
+</figure>
+
+<time datetime="2024-01-15">15 janvier 2024</time>
+<mark>Texte surligné</mark>
+<details>
+    <summary>Titre cliquable</summary>
+    <p>Contenu dépliable</p>
+</details>
+```
+
+**Avantages :**
+- Meilleur SEO
+- Accessibilité améliorée
+- Code plus lisible et maintenable
+- Structure logique claire
+
+---
+
+### 4. Différence entre `<div>` et `<span>` ?
+
+```html
+<!-- div : élément bloc -->
+<div class="container">
+    <p>Un div crée un nouveau bloc</p>
+</div>
+
+<!-- span : élément inline -->
+<p>Un <span class="highlight">span</span> reste dans le flux du texte</p>
+```
+
+- `<div>` : conteneur générique de niveau bloc, prend toute la largeur
+- `<span>` : conteneur générique inline, prend seulement l'espace nécessaire
+
+---
+
+## Formulaires HTML {#formulaires-html}
+
+### 5. Comment créer des formulaires HTML5 avec validation ?
+
+```html
+<form action="/submit" method="POST">
+    <!-- Input text avec validation -->
+    <label for="nom">Nom :</label>
+    <input type="text" id="nom" name="nom" 
+           required minlength="2" maxlength="50"
+           placeholder="Votre nom">
+
+    <!-- Email avec validation -->
+    <label for="email">Email :</label>
+    <input type="email" id="email" name="email" required>
+
+    <!-- Nombre avec min/max -->
+    <label for="age">Âge :</label>
+    <input type="number" id="age" name="age" 
+           min="18" max="100" required>
+
+    <!-- Date -->
+    <input type="date" name="dateNaissance">
+
+    <!-- Téléphone -->
+    <input type="tel" pattern="[0-9]{10}" placeholder="0612345678">
+
+    <!-- URL -->
+    <input type="url" placeholder="https://example.com">
+
+    <!-- Mot de passe -->
+    <input type="password" minlength="8" required>
+
+    <!-- Select -->
+    <select name="pays" required>
+        <option value="">Choisissez un pays</option>
+        <option value="fr">France</option>
+        <option value="be">Belgique</option>
+    </select>
+
+    <!-- Textarea -->
+    <textarea name="message" rows="4" maxlength="500"></textarea>
+
+    <!-- Checkbox -->
+    <input type="checkbox" id="conditions" required>
+    <label for="conditions">J'accepte les conditions</label>
+
+    <!-- Radio -->
+    <input type="radio" id="homme" name="genre" value="H">
+    <label for="homme">Homme</label>
+    <input type="radio" id="femme" name="genre" value="F">
+    <label for="femme">Femme</label>
+
+    <!-- Submit -->
+    <button type="submit">Envoyer</button>
+</form>
+```
+
+---
+
+## Accessibilité HTML {#accessibilité-html}
+
+### 6. Comment rendre un site accessible ?
+
+```html
+<!-- Alt text pour les images -->
+<img src="logo.png" alt="Logo de l'entreprise XYZ">
+
+<!-- Labels pour les formulaires -->
+<label for="email">Email :</label>
+<input type="email" id="email" name="email">
+
+<!-- ARIA (Accessible Rich Internet Applications) -->
+<button aria-label="Fermer" aria-expanded="false">
+    <span aria-hidden="true">×</span>
+</button>
+
+<nav aria-label="Navigation principale">
+    <ul role="menubar">
+        <li role="menuitem"><a href="/accueil">Accueil</a></li>
+    </ul>
+</nav>
+
+<!-- Structure de titres logique -->
+<h1>Titre principal (un seul par page)</h1>
+    <h2>Sous-titre</h2>
+        <h3>Sous-sous-titre</h3>
+
+<!-- Skip links pour la navigation au clavier -->
+<a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+<!-- Lang attribute -->
+<html lang="fr">
+<p lang="en">This paragraph is in English</p>
+```
+
+**Principes WCAG :**
+- **Perceptible** : contenu visible et audible
+- **Utilisable** : navigable au clavier
+- **Compréhensible** : texte lisible, comportement prévisible
+- **Robuste** : compatible avec les technologies d'assistance
+
+---
+
+## SEO et Méta-données {#seo-et-méta-données}
+
+### 7. Comment optimiser le SEO avec HTML ?
+
+```html
+<head>
+    <!-- Title : 50-60 caractères -->
+    <title>Guide HTML - Apprendre le développement web</title>
+
+    <!-- Meta description : 150-160 caractères -->
+    <meta name="description" content="Guide complet pour apprendre HTML5 avec des exemples pratiques et des bonnes pratiques SEO.">
+
+    <!-- Meta keywords (moins important aujourd'hui) -->
+    <meta name="keywords" content="HTML, HTML5, développement web, tutoriel">
+
+    <!-- Viewport pour responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Charset -->
+    <meta charset="UTF-8">
+
+    <!-- Open Graph (réseaux sociaux) -->
+    <meta property="og:title" content="Guide HTML">
+    <meta property="og:description" content="Guide complet HTML5">
+    <meta property="og:image" content="https://example.com/image.jpg">
+    <meta property="og:url" content="https://example.com/guide-html">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Guide HTML">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://example.com/guide-html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+</head>
+
+<body>
+    <!-- Hiérarchie de titres -->
+    <h1>Titre H1 unique avec mots-clés principaux</h1>
+    <h2>Sous-titres H2 pour structurer le contenu</h2>
+
+    <!-- Liens internes -->
+    <a href="/autre-page">Texte d'ancre descriptif</a>
+
+    <!-- Images avec alt -->
+    <img src="image.jpg" alt="Description pertinente avec mots-clés">
+
+    <!-- Schema.org / Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Guide HTML",
+        "author": {
+            "@type": "Person",
+            "name": "John Doe"
+        },
+        "datePublished": "2024-01-15"
+    }
+    </script>
+</body>
+```
+
+---
+
+## Questions Fondamentales CSS {#questions-fondamentales-css}
+
+### 1. Qu'est-ce que CSS et comment l'inclure dans HTML ?
+
+**CSS** (Cascading Style Sheets) est le langage de style pour le web.
+
+```html
+<!-- 1. CSS Inline (éviter) -->
+<p style="color: red; font-size: 16px;">Texte rouge</p>
+
+<!-- 2. CSS Interne -->
+<head>
+    <style>
+        p {
+            color: blue;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<!-- 3. CSS Externe (recommandé) -->
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+```
+
+---
+
+### 2. Quelle est la différence entre class et id ?
+
+```html
+<!-- ID : unique, haute spécificité -->
+<div id="header">En-tête unique</div>
+
+<!-- Class : réutilisable, spécificité moyenne -->
+<div class="card">Carte 1</div>
+<div class="card">Carte 2</div>
+<div class="card featured">Carte mise en avant</div>
+```
+
+```css
+/* ID : #nom */
+#header {
+    background: blue;
+}
+
+/* Class : .nom */
+.card {
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+/* Multiple classes */
+.card.featured {
+    border-color: gold;
+}
+```
+
+**Règles :**
+- Un ID doit être unique dans la page
+- Une classe peut être réutilisée
+- Préférer les classes pour le styling
+
+---
+
+## Sélecteurs et Spécificité {#sélecteurs-et-spécificité}
+
+### 3. Quels sont les différents types de sélecteurs CSS ?
+
+```css
+/* Sélecteur universel */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Sélecteur de type */
+p {
+    color: black;
+}
+
+/* Sélecteur de classe */
+.container {
+    width: 100%;
+}
+
+/* Sélecteur d'ID */
+#main {
+    background: white;
+}
+
+/* Sélecteur d'attribut */
+input[type="text"] {
+    border: 1px solid #ccc;
+}
+
+a[href^="https"] {  /* commence par */
+    color: green;
+}
+
+/* Sélecteurs combinés */
+div p {  /* Descendant */
+    color: red;
+}
+
+div > p {  /* Enfant direct */
+    color: blue;
+}
+
+h2 + p {  /* Sibling adjacent */
+    margin-top: 0;
+}
+
+h2 ~ p {  /* Tous les siblings suivants */
+    color: gray;
+}
+
+/* Pseudo-classes */
+a:hover {
+    color: red;
+}
+
+li:first-child {
+    font-weight: bold;
+}
+
+li:nth-child(odd) {
+    background: #f0f0f0;
+}
+
+input:focus {
+    outline: 2px solid blue;
+}
+
+/* Pseudo-éléments */
+p::first-line {
+    font-weight: bold;
+}
+
+p::before {
+    content: "→ ";
+}
+```
+
+---
+
+### 4. Comment fonctionne la spécificité CSS ?
+
+**Ordre de priorité (du plus au moins spécifique) :**
+
+1. `!important` (à éviter sauf exception)
+2. Styles inline
+3. ID
+4. Classes, attributs, pseudo-classes
+5. Éléments, pseudo-éléments
+
+```css
+/* Spécificité : 0,0,0,1 */
+p {
+    color: black;
+}
+
+/* Spécificité : 0,0,1,1 */
+p.intro {
+    color: blue;
+}
+
+/* Spécificité : 0,1,0,1 */
+#main p {
+    color: red;
+}
+
+/* Spécificité : 0,1,1,1 */
+#main p.intro {
+    color: green;  /* Celui-ci gagne */
+}
+
+/* !important surcharge tout (à éviter) */
+p {
+    color: purple !important;
+}
+```
+
+---
+
+## Box Model et Layout {#box-model-et-layout}
+
+### 5. Qu'est-ce que le Box Model CSS ?
+
+Chaque élément HTML est une boîte composée de :
+
+```css
+.box {
+    /* Contenu */
+    width: 200px;
+    height: 100px;
+
+    /* Padding : espace intérieur */
+    padding: 20px;
+
+    /* Border : bordure */
+    border: 2px solid black;
+
+    /* Margin : espace extérieur */
+    margin: 10px;
+}
+
+/* Box-sizing */
+* {
+    box-sizing: border-box;  /* width inclut padding et border */
+}
+```
+
+**Calcul de la largeur totale :**
+- `box-sizing: content-box` (défaut) : `width + padding + border + margin`
+- `box-sizing: border-box` : `width` (inclut padding et border) + margin
+
+---
+
+### 6. Quelle est la différence entre display: block, inline et inline-block ?
+
+```css
+/* block : prend toute la largeur, nouvelle ligne */
+div, p, h1 {
+    display: block;
+    width: 100%;
+}
+
+/* inline : dans le flux du texte, width/height ignorés */
+span, a, strong {
+    display: inline;
+}
+
+/* inline-block : hybride, dans le flux mais accepte width/height */
+.button {
+    display: inline-block;
+    width: 150px;
+    height: 40px;
+    padding: 10px;
+}
+
+/* none : élément caché et retiré du flux */
+.hidden {
+    display: none;
+}
+```
+
+---
+
+## Flexbox {#flexbox}
+
+### 7. Comment utiliser Flexbox pour le layout ?
+
+```css
+/* Conteneur flex */
+.container {
+    display: flex;
+
+    /* Direction */
+    flex-direction: row;  /* row | row-reverse | column | column-reverse */
+
+    /* Alignement horizontal (axe principal) */
+    justify-content: center;  /* flex-start | flex-end | center | space-between | space-around | space-evenly */
+
+    /* Alignement vertical (axe secondaire) */
+    align-items: center;  /* flex-start | flex-end | center | baseline | stretch */
+
+    /* Retour à la ligne */
+    flex-wrap: wrap;  /* nowrap | wrap | wrap-reverse */
+
+    /* Espacement entre les éléments */
+    gap: 20px;
+}
+
+/* Items flex */
+.item {
+    /* Facteur de croissance */
+    flex-grow: 1;
+
+    /* Facteur de rétrécissement */
+    flex-shrink: 1;
+
+    /* Taille de base */
+    flex-basis: 200px;
+
+    /* Raccourci : flex: grow shrink basis */
+    flex: 1 1 200px;
+
+    /* Alignement individuel */
+    align-self: flex-end;
+}
+```
+
+**Exemple pratique :**
+```css
+/* Layout horizontal centré */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Grid de cartes responsive */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    flex: 1 1 300px;  /* Cartes flexibles, min 300px */
+}
+```
+
+---
+
+## CSS Grid {#css-grid}
+
+### 8. Comment utiliser CSS Grid ?
+
+```css
+/* Conteneur grid */
+.grid-container {
+    display: grid;
+
+    /* Définir les colonnes */
+    grid-template-columns: 200px 1fr 200px;  /* 3 colonnes */
+    /* ou */
+    grid-template-columns: repeat(3, 1fr);  /* 3 colonnes égales */
+    /* ou */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  /* Responsive */
+
+    /* Définir les lignes */
+    grid-template-rows: auto 1fr auto;
+
+    /* Espacement */
+    gap: 20px;
+    /* ou séparément */
+    row-gap: 20px;
+    column-gap: 10px;
+
+    /* Zones nommées */
+    grid-template-areas:
+        "header header header"
+        "sidebar main main"
+        "footer footer footer";
+}
+
+/* Items grid */
+.header {
+    grid-area: header;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.main {
+    grid-area: main;
+}
+
+/* Positionnement manuel */
+.item {
+    grid-column: 1 / 3;  /* De la colonne 1 à 3 */
+    grid-row: 2 / 4;     /* De la ligne 2 à 4 */
+    /* ou */
+    grid-column: span 2;  /* S'étend sur 2 colonnes */
+}
+```
+
+**Exemple pratique :**
+```css
+/* Layout de page */
+.page-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 60px 1fr 40px;
+    min-height: 100vh;
+    gap: 20px;
+}
+
+/* Grid responsive de cartes */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+```
+
+---
+
+## Responsive Design {#responsive-design}
+
+### 9. Comment créer un design responsive ?
+
+```css
+/* Mobile-first approach */
+.container {
+    width: 100%;
+    padding: 15px;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+        margin: 0 auto;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 960px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/* Responsive images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Responsive typography */
+html {
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+/* Unités relatives */
+.card {
+    width: 90vw;  /* 90% de la largeur du viewport */
+    max-width: 600px;
+    padding: 2rem;  /* Relatif au font-size racine */
+}
+```
+
+---
+
+## Animations et Transitions {#animations-et-transitions}
+
+### 10. Comment créer des animations CSS ?
+
+```css
+/* Transitions : changements fluides */
+.button {
+    background: blue;
+    transition: all 0.3s ease;
+    /* ou spécifique */
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.button:hover {
+    background: darkblue;
+    transform: scale(1.05);
+}
+
+/* Animations : séquences complexes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.element {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Animation avec étapes */
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(100px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.slider {
+    animation: slide 2s infinite ease-in-out;
+}
+
+/* Transform */
+.card:hover {
+    transform: rotate(5deg) scale(1.1);
+}
+```
+
+---
+
+## Préprocesseurs CSS {#préprocesseurs-css}
+
+### 11. Qu'est-ce qu'un préprocesseur CSS (Sass/SCSS) ?
+
+```scss
+// Variables
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$spacing: 20px;
+
+// Nesting
+.nav {
+    background: $primary-color;
+    padding: $spacing;
+
+    ul {
+        list-style: none;
+
+        li {
+            display: inline-block;
+
+            a {
+                color: white;
+
+                &:hover {  // & = parent selector
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+// Mixins (fonctions réutilisables)
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    @include flexCenter;
+}
+
+// Mixin avec paramètres
+@mixin button($bg-color) {
+    background: $bg-color;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+
+    &:hover {
+        background: darken($bg-color, 10%);
+    }
+}
+
+.btn-primary {
+    @include button($primary-color);
+}
+
+// Extend
+%card-base {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card {
+    @extend %card-base;
+    background: white;
+}
+
+// Functions
+@function calculate-rem($px) {
+    @return #{$px / 16}rem;
+}
+
+.text {
+    font-size: calculate-rem(18);  // 1.125rem
+}
+```
+
+---
+
+## Questions Fondamentales TypeScript {#questions-fondamentales-typescript}
+
+### 1. Qu'est-ce que TypeScript et pourquoi l'utiliser ?
+
+**TypeScript** est un superset de JavaScript qui ajoute le typage statique.
+
+**Avantages :**
+- Détection d'erreurs à la compilation
+- IntelliSense et autocomplétion améliorés
+- Refactoring plus sûr
+- Documentation via les types
+- Meilleure maintenabilité du code
+
+```typescript
+// JavaScript
+function additionner(a, b) {
+    return a + b;
+}
+additionner(5, "10");  // "510" - comportement inattendu
+
+// TypeScript
+function additionner(a: number, b: number): number {
+    return a + b;
+}
+additionner(5, "10");  // ERREUR à la compilation
+```
+
+---
+
+### 2. Comment configurer TypeScript (tsconfig.json) ?
+
+```json
+{
+    "compilerOptions": {
+        "target": "ES2020",
+        "module": "commonjs",
+        "lib": ["ES2020", "DOM"],
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "declaration": true,
+        "sourceMap": true
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "dist"]
+}
+```
+
+---
+
+## Types et Interfaces TypeScript {#types-et-interfaces-typescript}
+
+### 3. Quels sont les types de base en TypeScript ?
+
+```typescript
+// Types primitifs
+let nom: string = "Alice";
+let age: number = 25;
+let estActif: boolean = true;
+let valeur: null = null;
+let indefini: undefined = undefined;
+
+// Any (à éviter)
+let nimporteQuoi: any = "texte";
+nimporteQuoi = 123;
+
+// Unknown (plus sûr que any)
+let inconnu: unknown = "texte";
+if (typeof inconnu === "string") {
+    console.log(inconnu.toUpperCase());
+}
+
+// Void
+function logger(): void {
+    console.log("Log");
+}
+
+// Never (fonction qui ne retourne jamais)
+function erreur(message: string): never {
+    throw new Error(message);
+}
+
+// Arrays
+let nombres: number[] = [1, 2, 3];
+let noms: Array<string> = ["Alice", "Bob"];
+
+// Tuple
+let personne: [string, number] = ["Alice", 25];
+
+// Enum
+enum Couleur {
+    Rouge = "RED",
+    Vert = "GREEN",
+    Bleu = "BLUE"
+}
+let couleur: Couleur = Couleur.Rouge;
+
+// Object
+let utilisateur: {
+    nom: string;
+    age: number;
+    email?: string;  // Optionnel
+} = {
+    nom: "Alice",
+    age: 25
+};
+```
+
+---
+
+### 4. Quelle est la différence entre interface et type ?
+
+```typescript
+// Interface : pour les objets et classes
+interface Utilisateur {
+    id: number;
+    nom: string;
+    email: string;
+    age?: number;
+}
+
+// Extension d'interface
+interface Admin extends Utilisateur {
+    role: string;
+    permissions: string[];
+}
+
+// Type : plus flexible
+type ID = number | string;
+
+type Point = {
+    x: number;
+    y: number;
+};
+
+// Union types
+type Resultat = Success | Error;
+
+// Intersection types
+type PersonneAvecAdresse = Personne & Adresse;
+
+// Type alias pour fonctions
+type Operation = (a: number, b: number) => number;
+
+const addition: Operation = (a, b) => a + b;
+```
+
+**Différences :**
+- Interface : peut être étendue et fusionnée (declaration merging)
+- Type : supporte unions, intersections, tuples, plus flexible
+- Préférer **interface** pour les objets, **type** pour les unions/intersections
+
+---
+
+### 5. Comment typer des fonctions ?
+
+```typescript
+// Fonction simple
+function saluer(nom: string): string {
+    return `Bonjour ${nom}`;
+}
+
+// Paramètres optionnels
+function creerUtilisateur(nom: string, age?: number): Utilisateur {
+    return { nom, age: age || 0 };
+}
+
+// Paramètres par défaut
+function multiplier(a: number, b: number = 1): number {
+    return a * b;
+}
+
+// Rest parameters
+function somme(...nombres: number[]): number {
+    return nombres.reduce((acc, n) => acc + n, 0);
+}
+
+// Fonction comme type
+type OperationMath = (a: number, b: number) => number;
+
+const diviser: OperationMath = (a, b) => a / b;
+
+// Overloading
+function formater(valeur: string): string;
+function formater(valeur: number): string;
+function formater(valeur: string | number): string {
+    if (typeof valeur === "number") {
+        return valeur.toFixed(2);
+    }
+    return valeur.toUpperCase();
+}
+
+// Arrow function
+const doubler = (n: number): number => n * 2;
+
+// Callback
+function traiterAsync(callback: (resultat: string) => void): void {
+    callback("Terminé");
+}
+```
+
+---
+
+## Generics TypeScript {#generics-typescript}
+
+### 6. Comment utiliser les Generics ?
+
+```typescript
+// Generic function
+function identity<T>(arg: T): T {
+    return arg;
+}
+
+const nombre = identity<number>(42);
+const texte = identity("hello");  // Type inféré
+
+// Generic avec contraintes
+function afficherLongueur<T extends { length: number }>(item: T): number {
+    return item.length;
+}
+
+afficherLongueur("hello");  // OK
+afficherLongueur([1, 2, 3]);  // OK
+// afficherLongueur(123);  // ERREUR
+
+// Generic interface
+interface Response<T> {
+    data: T;
+    status: number;
+    message: string;
+}
+
+const userResponse: Response<Utilisateur> = {
+    data: { id: 1, nom: "Alice", email: "alice@example.com" },
+    status: 200,
+    message: "Success"
+};
+
+// Generic class
+class DataStore<T> {
+    private data: T[] = [];
+
+    add(item: T): void {
+        this.data.push(item);
+    }
+
+    get(index: number): T | undefined {
+        return this.data[index];
+    }
+
+    getAll(): T[] {
+        return [...this.data];
+    }
+}
+
+const numberStore = new DataStore<number>();
+numberStore.add(42);
+
+// Multiple generic types
+function pair<T, U>(first: T, second: U): [T, U] {
+    return [first, second];
+}
+
+const result = pair<string, number>("age", 25);
+```
+
+---
+
+## Types Avancés TypeScript {#types-avancés-typescript}
+
+### 7. Quels sont les types avancés en TypeScript ?
+
+```typescript
+// Union types
+type Resultat = "success" | "error" | "pending";
+let status: Resultat = "success";
+
+// Intersection types
+type Personne = { nom: string };
+type Employe = { entreprise: string };
+type PersonneEmploye = Personne & Employe;
+
+const employe: PersonneEmploye = {
+    nom: "Alice",
+    entreprise: "TechCorp"
+};
+
+// Literal types
+type Direction = "nord" | "sud" | "est" | "ouest";
+let direction: Direction = "nord";
+
+// Type guards
+function estString(valeur: unknown): valeur is string {
+    return typeof valeur === "string";
+}
+
+// Mapped types
+type Readonly<T> = {
+    readonly [P in keyof T]: T[P];
+};
+
+type Partial<T> = {
+    [P in keyof T]?: T[P];
+};
+
+// Utility types
+interface Utilisateur {
+    id: number;
+    nom: string;
+    email: string;
+    age: number;
+}
+
+// Partial : tous les champs optionnels
+type UtilisateurPartiel = Partial<Utilisateur>;
+
+// Required : tous les champs requis
+type UtilisateurRequis = Required<Utilisateur>;
+
+// Pick : sélectionner certains champs
+type UtilisateurPublic = Pick<Utilisateur, "nom" | "email">;
+
+// Omit : exclure certains champs
+type UtilisateurSansId = Omit<Utilisateur, "id">;
+
+// Record : créer un objet avec clés et valeurs typées
+type Roles = Record<string, string[]>;
+const roles: Roles = {
+    admin: ["read", "write", "delete"],
+    user: ["read"]
+};
+
+// Conditional types
+type IsString<T> = T extends string ? true : false;
+type Test1 = IsString<string>;  // true
+type Test2 = IsString<number>;  // false
+
+// Template literal types
+type EmailLocale = "en" | "fr" | "es";
+type EmailKey = `email_${EmailLocale}`;
+// "email_en" | "email_fr" | "email_es"
+```
+
+---
+
+## Décorateurs TypeScript {#décorateurs-typescript}
+
+### 8. Qu'est-ce qu'un décorateur et comment l'utiliser ?
+
+```typescript
+// Activer dans tsconfig.json
+// "experimentalDecorators": true
+
+// Class decorator
+function sealed(constructor: Function) {
+    Object.seal(constructor);
+    Object.seal(constructor.prototype);
+}
+
+@sealed
+class MaClasse {
+    // ...
+}
+
+// Method decorator
+function log(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+    const originalMethod = descriptor.value;
+
+    descriptor.value = function (...args: any[]) {
+        console.log(`Appel de ${propertyKey} avec`, args);
+        const result = originalMethod.apply(this, args);
+        console.log(`Résultat:`, result);
+        return result;
+    };
+
+    return descriptor;
+}
+
+class Calculator {
+    @log
+    add(a: number, b: number): number {
+        return a + b;
+    }
+}
+
+// Property decorator
+function readonly(target: any, propertyKey: string) {
+    Object.defineProperty(target, propertyKey, {
+        writable: false
+    });
+}
+
+class Person {
+    @readonly
+    name: string = "Alice";
+}
+
+// Parameter decorator
+function required(target: any, propertyKey: string, parameterIndex: number) {
+    console.log(`Paramètre ${parameterIndex} de ${propertyKey} est requis`);
+}
+
+class Greeter {
+    greet(@required name: string) {
+        return `Hello ${name}`;
+    }
+}
+```
+
+---
+
+## TypeScript avec React {#typescript-avec-react}
+
+### 9. Comment utiliser TypeScript avec React ?
+
+```typescript
+import React, { useState, useEffect, FC, ReactNode } from 'react';
+
+// Props interface
+interface ButtonProps {
+    text: string;
+    onClick: () => void;
+    disabled?: boolean;
+    children?: ReactNode;
+}
+
+// Functional Component
+const Button: FC<ButtonProps> = ({ text, onClick, disabled = false }) => {
+    return (
+        <button onClick={onClick} disabled={disabled}>
+            {text}
+        </button>
+    );
+};
+
+// Component avec useState
+interface User {
+    id: number;
+    name: string;
+    email: string;
+}
+
+const UserProfile: FC = () => {
+    const [user, setUser] = useState<User | null>(null);
+    const [loading, setLoading] = useState<boolean>(false);
+
+    useEffect(() => {
+        fetchUser();
+    }, []);
+
+    const fetchUser = async (): Promise<void> => {
+        setLoading(true);
+        try {
+            const response = await fetch('/api/user');
+            const data: User = await response.json();
+            setUser(data);
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    if (loading) return <div>Loading...</div>;
+    if (!user) return <div>No user</div>;
+
+    return (
+        <div>
+            <h1>{user.name}</h1>
+            <p>{user.email}</p>
+        </div>
+    );
+};
+
+// Event handlers
+interface FormProps {
+    onSubmit: (data: FormData) => void;
+}
+
+interface FormData {
+    email: string;
+    password: string;
+}
+
+const LoginForm: FC<FormProps> = ({ onSubmit }) => {
+    const [formData, setFormData] = useState<FormData>({
+        email: '',
+        password: ''
+    });
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+        e.preventDefault();
+        onSubmit(formData);
+    };
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+            />
+            <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+            />
+            <button type="submit">Login</button>
+        </form>
+    );
+};
+
+// Generic component
+interface ListProps<T> {
+    items: T[];
+    renderItem: (item: T) => ReactNode;
+}
+
+function List<T>({ items, renderItem }: ListProps<T>): JSX.Element {
+    return (
+        <ul>
+            {items.map((item, index) => (
+                <li key={index}>{renderItem(item)}</li>
+            ))}
+        </ul>
+    );
+}
+
+// Utilisation
+<List
+    items={[1, 2, 3]}
+    renderItem={(num) => <span>{num * 2}</span>}
+/>
+```
+
+---
+
+## Questions Fondamentales Docker {#questions-fondamentales-docker}
+
+### 1. Qu'est-ce que Docker et pourquoi l'utiliser ?
+
+**Docker** est une plateforme de conteneurisation qui permet d'empaqueter une application avec toutes ses dépendances.
+
+**Avantages :**
+- **Portabilité** : "fonctionne sur ma machine" → fonctionne partout
+- **Isolation** : chaque conteneur est isolé
+- **Léger** : plus rapide que les VM (pas de système d'exploitation complet)
+- **Reproductibilité** : même environnement en dev, test et prod
+- **Scalabilité** : facile de multiplier les instances
+
+**Concepts clés :**
+- **Image** : template en lecture seule (blueprint)
+- **Conteneur** : instance en cours d'exécution d'une image
+- **Dockerfile** : fichier de recette pour créer une image
+- **Docker Hub** : registry public d'images
+
+---
+
+### 2. Quelle est la différence entre une image et un conteneur ?
+
+```bash
+# Image : template statique
+docker images                    # Lister les images
+docker pull nginx:latest         # Télécharger une image
+
+# Conteneur : instance en cours d'exécution
+docker ps                        # Lister les conteneurs actifs
+docker ps -a                     # Tous les conteneurs
+docker run nginx                 # Créer et démarrer un conteneur
+
+# Analogie
+# Image = Classe
+# Conteneur = Instance d'objet
+```
+
+---
+
+## Images et Conteneurs {#images-et-conteneurs}
+
+### 3. Quelles sont les commandes Docker de base ?
+
+```bash
+# Images
+docker pull <image>              # Télécharger une image
+docker images                    # Lister les images
+docker rmi <image>               # Supprimer une image
+docker build -t <name> .         # Construire une image
+
+# Conteneurs
+docker run <image>               # Créer et démarrer
+docker run -d <image>            # En arrière-plan (detached)
+docker run -p 8080:80 <image>    # Mapper les ports (host:container)
+docker run --name mon-app <image>  # Nommer le conteneur
+docker run -v /host:/container <image>  # Monter un volume
+
+docker ps                        # Conteneurs actifs
+docker ps -a                     # Tous les conteneurs
+docker start <container>         # Démarrer
+docker stop <container>          # Arrêter
+docker restart <container>       # Redémarrer
+docker rm <container>            # Supprimer
+docker logs <container>          # Voir les logs
+docker logs -f <container>       # Suivre les logs en temps réel
+docker exec -it <container> bash # Entrer dans le conteneur
+
+# Nettoyage
+docker system prune              # Nettoyer les ressources inutilisées
+docker container prune           # Supprimer conteneurs arrêtés
+docker image prune               # Supprimer images non utilisées
+docker volume prune              # Supprimer volumes non utilisés
+```
+
+---
+
+## Dockerfile {#dockerfile}
+
+### 4. Comment créer un Dockerfile ?
+
+```dockerfile
+# Dockerfile pour une app Node.js
+
+# Image de base
+FROM node:18-alpine
+
+# Métadonnées
+LABEL maintainer="dev@example.com"
+LABEL version="1.0"
+
+# Créer le répertoire de travail
+WORKDIR /app
+
+# Copier package.json et package-lock.json
+COPY package*.json ./
+
+# Installer les dépendances
+RUN npm ci --only=production
+
+# Copier le code source
+COPY . .
+
+# Exposer le port
+EXPOSE 3000
+
+# Variables d'environnement
+ENV NODE_ENV=production
+
+# Utilisateur non-root (sécurité)
+USER node
+
+# Commande de démarrage
+CMD ["node", "server.js"]
+```
+
+**Dockerfile multi-stage (optimisé) :**
+```dockerfile
+# Stage 1: Build
+FROM node:18-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+# Stage 2: Production
+FROM node:18-alpine
+WORKDIR /app
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+COPY package*.json ./
+EXPOSE 3000
+USER node
+CMD ["node", "dist/server.js"]
+```
+
+**Dockerfile pour app Python :**
+```dockerfile
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+EXPOSE 8000
+
+CMD ["python", "app.py"]
+```
+
+---
+
+### 5. Quelles sont les bonnes pratiques pour un Dockerfile ?
+
+```dockerfile
+# ✅ Utiliser des images officielles et légères
+FROM node:18-alpine
+
+# ✅ Ordre optimal (du moins au plus changeant)
+WORKDIR /app
+COPY package*.json ./           # Dépendances d'abord
+RUN npm ci
+COPY . .                        # Code source après
+
+# ✅ Minimiser les layers
+RUN apt-get update && \
+    apt-get install -y curl vim && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# ✅ .dockerignore pour exclure des fichiers
+# node_modules
+# .git
+# *.log
+
+# ✅ Multi-stage pour images plus petites
+FROM node:18 AS builder
+# ... build steps ...
+FROM node:18-alpine
+COPY --from=builder /app/dist ./dist
+
+# ✅ Ne pas run en tant que root
+USER node
+
+# ✅ Utiliser COPY au lieu de ADD
+COPY . .
+
+# ✅ Spécifier des versions exactes
+FROM node:18.17.0-alpine
+
+# ✅ Health check
+HEALTHCHECK --interval=30s --timeout=3s \
+    CMD curl -f http://localhost:3000/health || exit 1
+```
+
+---
+
+## Docker Compose {#docker-compose}
+
+### 6. Qu'est-ce que Docker Compose et comment l'utiliser ?
+
+Docker Compose permet de définir et gérer des applications multi-conteneurs :
+
+```yaml
+# docker-compose.yml
+version: '3.8'
+
+services:
+  # Application web
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://user:pass@db:5432/mydb
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - ./src:/app/src
+    networks:
+      - app-network
+
+  # Base de données PostgreSQL
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: mydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  # Redis cache
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+
+  # Nginx reverse proxy
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - web
+    networks:
+      - app-network
+
+volumes:
+  postgres-data:
+
+networks:
+  app-network:
+    driver: bridge
+```
+
+**Commandes Docker Compose :**
+```bash
+docker-compose up                 # Démarrer tous les services
+docker-compose up -d              # En arrière-plan
+docker-compose down               # Arrêter et supprimer
+docker-compose down -v            # Inclure les volumes
+docker-compose ps                 # Statut des services
+docker-compose logs               # Logs de tous les services
+docker-compose logs -f web        # Suivre les logs du service web
+docker-compose exec web bash      # Entrer dans le conteneur
+docker-compose build              # Rebuild les images
+docker-compose restart            # Redémarrer les services
+```
+
+---
+
+## Réseaux et Volumes Docker {#réseaux-et-volumes-docker}
+
+### 7. Comment gérer les réseaux et volumes Docker ?
+
+**Volumes (persistance des données) :**
+```bash
+# Créer un volume
+docker volume create mon-volume
+
+# Lister les volumes
+docker volume ls
+
+# Utiliser un volume
+docker run -v mon-volume:/app/data nginx
+
+# Volume bind mount (lier un dossier local)
+docker run -v /chemin/local:/app/data nginx
+
+# Inspecter un volume
+docker volume inspect mon-volume
+
+# Supprimer un volume
+docker volume rm mon-volume
+```
+
+**Réseaux :**
+```bash
+# Créer un réseau
+docker network create mon-reseau
+
+# Lister les réseaux
+docker network ls
+
+# Utiliser un réseau
+docker run --network mon-reseau nginx
+
+# Connecter un conteneur existant
+docker network connect mon-reseau mon-conteneur
+
+# Inspecter un réseau
+docker network inspect mon-reseau
+
+# Types de réseaux
+# - bridge (défaut) : réseau isolé
+# - host : utilise le réseau de l'hôte
+# - none : pas de réseau
+```
+
+---
+
+## Optimisation Docker {#optimisation-docker}
+
+### 8. Comment optimiser les images Docker ?
+
+```dockerfile
+# ❌ Image non optimisée (1GB+)
+FROM ubuntu:latest
+RUN apt-get update
+RUN apt-get install -y python3
+RUN apt-get install -y pip
+COPY . .
+CMD ["python3", "app.py"]
+
+# ✅ Image optimisée (50MB)
+FROM python:3.11-alpine
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+CMD ["python", "app.py"]
+
+# ✅ Multi-stage pour encore plus petit
+FROM python:3.11 AS builder
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --user -r requirements.txt
+
+FROM python:3.11-alpine
+WORKDIR /app
+COPY --from=builder /root/.local /root/.local
+COPY . .
+ENV PATH=/root/.local/bin:$PATH
+CMD ["python", "app.py"]
+```
+
+**Techniques d'optimisation :**
+- Utiliser des images Alpine (petites)
+- Multi-stage builds
+- Mettre en cache les layers (ordre optimal)
+- Minimiser le nombre de layers (combiner RUN)
+- Utiliser .dockerignore
+- Ne pas inclure les outils de build dans l'image finale
+
+---
+
+## Concepts Fondamentaux DevOps {#concepts-fondamentaux-devops}
+
+### 1. Qu'est-ce que DevOps ?
+
+**DevOps** est une culture et un ensemble de pratiques qui combinent le développement (Dev) et les opérations (Ops).
+
+**Principes clés :**
+- **Collaboration** : Dev et Ops travaillent ensemble
+- **Automatisation** : CI/CD, IaC, tests automatisés
+- **Monitoring** : surveillance continue de la production
+- **Feedback rapide** : déploiements fréquents et itératifs
+- **Amélioration continue** : apprendre des échecs
+
+**Bénéfices :**
+- Déploiements plus rapides et fréquents
+- Réduction des erreurs
+- Meilleure qualité du code
+- Time-to-market réduit
+
+---
+
+### 2. Qu'est-ce que CI/CD ?
+
+**CI (Continuous Integration)** : intégration continue du code
+**CD (Continuous Delivery/Deployment)** : livraison/déploiement continu
+
+```
+Code Push → Tests automatiques → Build → Tests d'intégration → Déploiement staging → Tests E2E → Déploiement production
+```
+
+---
+
+## CI/CD {#cicd}
+
+### 3. Comment mettre en place un pipeline CI/CD ?
+
+**Exemple avec GitHub Actions :**
+```yaml
+# .github/workflows/ci-cd.yml
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run linter
+        run: npm run lint
+
+      - name: Run tests
+        run: npm test
+
+      - name: Run coverage
+        run: npm run test:coverage
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build Docker image
+        run: docker build -t myapp:${{ github.sha }} .
+
+      - name: Push to registry
+        run: |
+          echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+          docker push myapp:${{ github.sha }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Deploy to production
+        run: |
+          # Commandes de déploiement
+          kubectl set image deployment/myapp myapp=myapp:${{ github.sha }}
+```
+
+**Exemple avec GitLab CI :**
+```yaml
+# .gitlab-ci.yml
+stages:
+  - test
+  - build
+  - deploy
+
+variables:
+  DOCKER_IMAGE: registry.gitlab.com/$CI_PROJECT_PATH
+
+test:
+  stage: test
+  image: node:18
+  script:
+    - npm ci
+    - npm run lint
+    - npm test
+  coverage: '/Statements\s*:\s*(\d+\.\d+)%/'
+
+build:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker build -t $DOCKER_IMAGE:$CI_COMMIT_SHA .
+    - docker push $DOCKER_IMAGE:$CI_COMMIT_SHA
+  only:
+    - main
+
+deploy:
+  stage: deploy
+  image: alpine:latest
+  script:
+    - apk add --no-cache curl
+    - curl -X POST $DEPLOY_WEBHOOK
+  only:
+    - main
+  environment:
+    name: production
+```
+
+---
+
+## Infrastructure as Code {#infrastructure-as-code}
+
+### 4. Qu'est-ce que l'Infrastructure as Code (IaC) ?
+
+Gestion de l'infrastructure via du code (version control, review, automatisation).
+
+**Terraform :**
+```hcl
+# main.tf
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "eu-west-1"
+}
+
+# VPC
+resource "aws_vpc" "main" {
+  cidr_block = "10.0.0.0/16"
+
+  tags = {
+    Name = "main-vpc"
+  }
+}
+
+# EC2 Instance
+resource "aws_instance" "web" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro"
+  
+  tags = {
+    Name = "web-server"
+  }
+}
+
+# S3 Bucket
+resource "aws_s3_bucket" "storage" {
+  bucket = "my-app-storage"
+
+  versioning {
+    enabled = true
+  }
+}
+```
+
+**Commandes Terraform :**
+```bash
+terraform init        # Initialiser
+terraform plan        # Voir les changements
+terraform apply       # Appliquer les changements
+terraform destroy     # Détruire l'infrastructure
+```
+
+**Ansible (configuration management) :**
+```yaml
+# playbook.yml
+- name: Configure web servers
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Start nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Copy website files
+      copy:
+        src: ./website/
+        dest: /var/www/html/
+```
+
+---
+
+## Monitoring et Logging {#monitoring-et-logging}
+
+### 5. Comment mettre en place le monitoring ?
+
+**Prometheus + Grafana :**
+```yaml
+# docker-compose.yml
+version: '3.8'
+
+services:
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana-data:/var/lib/grafana
+
+  # Application avec métriques
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - METRICS_ENABLED=true
+
+volumes:
+  prometheus-data:
+  grafana-data:
+```
+
+**Prometheus config :**
+```yaml
+# prometheus.yml
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'app'
+    static_configs:
+      - targets: ['app:8080']
+```
+
+**Logging avec ELK Stack :**
+- **Elasticsearch** : stockage et recherche
+- **Logstash** : collecte et traitement
+- **Kibana** : visualisation
+
+---
+
+## Cloud Platforms {#cloud-platforms}
+
+### 6. Quelles sont les principales plateformes cloud ?
+
+**AWS (Amazon Web Services) :**
+- EC2 : serveurs virtuels
+- S3 : stockage objet
+- RDS : bases de données managées
+- Lambda : serverless functions
+- ECS/EKS : orchestration de conteneurs
+
+**Azure (Microsoft) :**
+- Virtual Machines
+- Blob Storage
+- Azure SQL Database
+- Azure Functions
+- AKS : Kubernetes managé
+
+**GCP (Google Cloud Platform) :**
+- Compute Engine
+- Cloud Storage
+- Cloud SQL
+- Cloud Functions
+- GKE : Kubernetes managé
+
+**Services communs :**
+- Compute (VMs, conteneurs)
+- Storage (objet, bloc, fichier)
+- Databases (SQL, NoSQL)
+- Networking (VPC, load balancers)
+- Serverless (functions)
+
+---
+
+## Questions Fondamentales Git {#questions-fondamentales-git}
+
+### 1. Qu'est-ce que Git ?
+
+**Git** est un système de contrôle de version distribué.
+
+**Avantages :**
+- Historique complet des modifications
+- Collaboration facilitée
+- Branches pour développement parallèle
+- Retour en arrière possible
+- Décentralisé (chaque clone est une sauvegarde)
+
+**Concepts de base :**
+```bash
+# Initialiser un repo
+git init
+
+# Configuration
+git config --global user.name "Votre Nom"
+git config --global user.email "email@example.com"
+
+# Cloner un repo
+git clone https://github.com/user/repo.git
+
+# Statut des fichiers
+git status
+
+# Ajouter des fichiers au staging
+git add fichier.txt
+git add .                # Tous les fichiers
+
+# Commit
+git commit -m "Message descriptif"
+
+# Voir l'historique
+git log
+git log --oneline
+git log --graph --all
+
+# Voir les différences
+git diff                 # Changements non stagés
+git diff --staged        # Changements stagés
+```
+
+---
+
+### 2. Quel est le workflow Git de base ?
+
+```
+Working Directory → Staging Area → Local Repository → Remote Repository
+     (add)              (commit)           (push)
+```
+
+```bash
+# 1. Modifier des fichiers
+vim fichier.txt
+
+# 2. Ajouter au staging
+git add fichier.txt
+
+# 3. Commit local
+git commit -m "Description du changement"
+
+# 4. Push vers remote
+git push origin main
+```
+
+---
+
+## Branches et Merge {#branches-et-merge}
+
+### 3. Comment travailler avec les branches ?
+
+```bash
+# Lister les branches
+git branch                      # Locales
+git branch -a                   # Toutes (locales + distantes)
+
+# Créer une branche
+git branch feature/nouvelle-fonctionnalite
+
+# Changer de branche
+git checkout feature/nouvelle-fonctionnalite
+# ou (Git 2.23+)
+git switch feature/nouvelle-fonctionnalite
+
+# Créer et changer en une commande
+git checkout -b feature/nouvelle-fonctionnalite
+# ou
+git switch -c feature/nouvelle-fonctionnalite
+
+# Supprimer une branche
+git branch -d feature-branch    # Safe delete
+git branch -D feature-branch    # Force delete
+
+# Supprimer une branche distante
+git push origin --delete feature-branch
+
+# Renommer une branche
+git branch -m ancien-nom nouveau-nom
+```
+
+---
+
+### 4. Comment merger des branches ?
+
+```bash
+# Merger feature dans main
+git checkout main
+git merge feature/nouvelle-fonctionnalite
+
+# Types de merge
+# Fast-forward : historique linéaire
+git merge feature-branch
+
+# No-fast-forward : crée un commit de merge
+git merge --no-ff feature-branch
+
+# Squash : regroupe tous les commits en un seul
+git merge --squash feature-branch
+git commit -m "Feature: nouvelle fonctionnalite"
+
+# Annuler un merge
+git merge --abort               # Pendant un merge
+git reset --hard HEAD~1         # Après un merge
+```
+
+---
+
+## Rebase et Cherry-pick {#rebase-et-cherry-pick}
+
+### 5. Quelle est la différence entre merge et rebase ?
+
+```bash
+# Merge : crée un commit de merge
+git checkout main
+git merge feature
+# Historique :
+#     A---B---C main
+#          \   \
+#           D---E feature
+#                \
+#                 M (merge commit)
+
+# Rebase : réécrit l'historique
+git checkout feature
+git rebase main
+# Historique :
+#     A---B---C main
+#              \
+#               D'---E' feature (commits réappliqués)
+
+# Rebase interactif (modifier l'historique)
+git rebase -i HEAD~3
+# Options :
+# pick : garder le commit
+# reword : modifier le message
+# edit : modifier le contenu
+# squash : fusionner avec le commit précédent
+# drop : supprimer le commit
+```
+
+**Quand utiliser quoi ?**
+- **Merge** : historique complet, branches publiques
+- **Rebase** : historique propre, branches privées/locales
+
+**Règle d'or :** Ne jamais rebase des commits déjà pushés/publics !
+
+---
+
+### 6. Comment utiliser cherry-pick ?
+
+```bash
+# Appliquer un commit spécifique sur la branche actuelle
+git cherry-pick abc123
+
+# Cherry-pick plusieurs commits
+git cherry-pick abc123 def456
+
+# Cherry-pick avec conflit
+git cherry-pick abc123
+# Résoudre les conflits
+git add .
+git cherry-pick --continue
+
+# Annuler un cherry-pick
+git cherry-pick --abort
+```
+
+---
+
+## Résolution de Conflits {#résolution-de-conflits}
+
+### 7. Comment résoudre les conflits Git ?
+
+```bash
+# Conflit lors d'un merge ou rebase
+git merge feature-branch
+# CONFLICT (content): Merge conflict in fichier.txt
+
+# Voir les fichiers en conflit
+git status
+
+# Ouvrir le fichier et éditer
+# <<<<<<< HEAD
+# Code de la branche actuelle
+# =======
+# Code de l'autre branche
+# >>>>>>> feature-branch
+
+# Après résolution
+git add fichier.txt
+git commit                      # Pour merge
+git rebase --continue           # Pour rebase
+
+# Annuler la résolution
+git merge --abort
+git rebase --abort
+
+# Outils de merge
+git mergetool
+
+# Choisir une version
+git checkout --ours fichier.txt    # Garder votre version
+git checkout --theirs fichier.txt  # Garder leur version
+```
+
+---
+
+## Bonnes Pratiques Git {#bonnes-pratiques-git}
+
+### 8. Quelles sont les bonnes pratiques Git ?
+
+**Messages de commit :**
+```bash
+# ✅ Bon format
+git commit -m "feat: ajouter authentification OAuth"
+git commit -m "fix: corriger bug calcul total panier"
+git commit -m "docs: mettre à jour README avec instructions Docker"
+
+# Convention Conventional Commits
+# Type: feat, fix, docs, style, refactor, test, chore
+# Format: type(scope): description
+git commit -m "feat(auth): implémenter login avec JWT"
+
+# Message détaillé
+git commit -m "fix: corriger calcul TVA
+
+- Ajouter validation du taux de TVA
+- Corriger arrondi à 2 décimales
+- Ajouter tests unitaires
+
+Closes #123"
+```
+
+**Workflow de branche :**
+```bash
+# Git Flow
+main          # Production
+develop       # Intégration
+feature/*     # Nouvelles fonctionnalités
+hotfix/*      # Corrections urgentes en production
+release/*     # Préparation de release
+
+# GitHub Flow (simplifié)
+main          # Production
+feature/*     # Tout le développement
+
+# Créer une feature
+git checkout -b feature/user-profile
+# Développer, commit
+git push -u origin feature/user-profile
+# Créer une Pull Request
+# Après review : merge dans main
+```
+
+**Commandes utiles :**
+```bash
+# Sauvegarder temporairement des changements
+git stash
+git stash list
+git stash pop
+git stash apply stash@{0}
+
+# Modifier le dernier commit
+git commit --amend -m "Nouveau message"
+
+# Annuler des changements
+git restore fichier.txt         # Annuler modifications non stagées
+git restore --staged fichier.txt # Retirer du staging
+git reset HEAD~1                # Annuler dernier commit (garde les changements)
+git reset --hard HEAD~1         # Annuler commit et changements
+
+# Nettoyer les fichiers non trackés
+git clean -n                    # Voir ce qui serait supprimé
+git clean -f                    # Supprimer
+git clean -fd                   # Supprimer dossiers aussi
+
+# Retrouver des commits perdus
+git reflog
+git checkout abc123
+```
+
+---
+
+## Questions Fondamentales GitHub {#questions-fondamentales-github}
+
+### 1. Qu'est-ce que GitHub ?
+
+**GitHub** est une plateforme d'hébergement de code basée sur Git avec fonctionnalités collaboratives.
+
+**Fonctionnalités :**
+- Hébergement de repos Git
+- Pull Requests pour code review
+- Issues pour suivi de bugs/tâches
+- GitHub Actions pour CI/CD
+- Projects pour gestion de projet
+- Wiki pour documentation
+- Releases et tags
+
+---
+
+### 2. Comment contribuer à un projet sur GitHub ?
+
+```bash
+# 1. Fork le repo sur GitHub (bouton Fork)
+
+# 2. Clone votre fork
+git clone https://github.com/VOTRE-USERNAME/repo.git
+cd repo
+
+# 3. Ajouter l'upstream (repo original)
+git remote add upstream https://github.com/ORIGINAL-OWNER/repo.git
+
+# 4. Créer une branche pour votre contribution
+git checkout -b fix/bug-description
+
+# 5. Faire vos modifications et commit
+git add .
+git commit -m "fix: corriger le bug xyz"
+
+# 6. Push vers votre fork
+git push origin fix/bug-description
+
+# 7. Créer une Pull Request sur GitHub
+
+# 8. Mettre à jour depuis upstream
+git fetch upstream
+git checkout main
+git merge upstream/main
+git push origin main
+```
+
+---
+
+## Pull Requests {#pull-requests}
+
+### 3. Comment créer une bonne Pull Request ?
+
+**Structure d'une bonne PR :**
+```markdown
+## Description
+Courte description des changements
+
+## Type de changement
+- [ ] Bug fix
+- [x] Nouvelle fonctionnalité
+- [ ] Breaking change
+- [ ] Documentation
+
+## Comment tester ?
+1. Checkout la branche
+2. Lancer `npm install`
+3. Lancer `npm test`
+4. Tester manuellement en naviguant vers /login
+
+## Checklist
+- [x] Tests ajoutés/modifiés
+- [x] Documentation mise à jour
+- [x] Code lint sans erreurs
+- [x] Tous les tests passent
+
+## Screenshots (si applicable)
+![capture d'écran](url)
+
+## Issues liées
+Closes #123
+Fixes #456
+```
+
+**Bonnes pratiques :**
+- PR petites et focalisées (un seul but)
+- Titre descriptif
+- Description claire
+- Tests inclus
+- Code review demandé
+
+---
+
+### 4. Comment faire une code review ?
+
+```markdown
+# Commentaires constructifs
+
+✅ Bon commentaire :
+"Cette fonction pourrait être simplifiée avec Array.map() au lieu d'une boucle for. 
+Exemple :
+```javascript
+const result = items.map(item => item.value);
+```
+Qu'en penses-tu ?"
+
+❌ Mauvais commentaire :
+"Ce code est mauvais"
+
+# Types de commentaires
+- **Nit** : suggestion mineure
+- **Question** : demande de clarification  
+- **Blocking** : doit être corrigé avant merge
+- **Praise** : encouragement positif
+
+# Review checklist
+- [ ] Le code fait ce qu'il prétend faire
+- [ ] Tests suffisants
+- [ ] Pas de régression
+- [ ] Lisibilité et maintenabilité
+- [ ] Performance acceptable
+- [ ] Sécurité (pas de failles)
+- [ ] Documentation à jour
+```
+
+---
+
+## GitHub Actions {#github-actions}
+
+### 5. Comment utiliser GitHub Actions ?
+
+```yaml
+# .github/workflows/ci.yml
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16, 18, 20]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run linter
+        run: npm run lint
+
+      - name: Run tests
+        run: npm test
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage/coverage-final.json
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Deploy to production
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        run: |
+          echo "Deploying..."
+          # Commandes de déploiement
+```
+
+**Actions courantes :**
+- `actions/checkout` : clone le repo
+- `actions/setup-node` : configure Node.js
+- `actions/cache` : cache des dépendances
+- `actions/upload-artifact` : sauvegarde des artifacts
+- `codecov/codecov-action` : upload coverage
+
+---
+
+## GitHub Workflows {#github-workflows}
+
+### 6. Quels sont les workflows GitHub courants ?
+
+**Release automatique :**
+```yaml
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build
+        run: npm run build
+
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./dist/app.zip
+          asset_name: app.zip
+          asset_content_type: application/zip
+```
+
+---
+
+## Collaboration GitHub {#collaboration-github}
+
+### 7. Comment gérer un projet collaboratif sur GitHub ?
+
+**Organisation du repo :**
+```
+repo/
+├── .github/
+│   ├── workflows/           # CI/CD
+│   ├── ISSUE_TEMPLATE/      # Templates d'issues
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   └── CODEOWNERS           # Reviewers automatiques
+├── docs/                    # Documentation
+├── README.md                # Introduction
+├── CONTRIBUTING.md          # Guide de contribution
+├── CODE_OF_CONDUCT.md       # Code de conduite
+└── LICENSE                  # Licence
+```
+
+**Protections de branches :**
+```
+Settings → Branches → Branch protection rules
+
+✅ Require pull request reviews (1-2 reviews)
+✅ Require status checks (CI doit passer)
+✅ Require branches to be up to date
+✅ Restrict who can push
+✅ Require signed commits (optionnel)
+```
+
+**Labels pour issues/PRs :**
+- `bug` : problème à corriger
+- `enhancement` : nouvelle fonctionnalité
+- `documentation` : amélioration doc
+- `good first issue` : pour débutants
+- `help wanted` : besoin d'aide
+- `wontfix` : ne sera pas traité
+
+**Milestones :**
+Regrouper issues/PRs par version ou sprint
+
+**Projects :**
+Kanban board pour organiser le travail
+- To Do
+- In Progress
+- Review
+- Done
+
+---
+
